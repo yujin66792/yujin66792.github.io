@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MySql基础介绍, 记录笔记">
+    <meta name="keywords" content="MySql基础, 记录笔记">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>MySql基础介绍 | YuJin的博客</title>
+    <title>MySql基础 | YuJin的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,12 +305,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MySql基础介绍</h1>
+                    <h1 class="description center-align post-title">MySql基础</h1>
                 </div>
             </div>
         </div>
@@ -448,14 +448,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    4.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    19 分
                 </div>
                 
 
@@ -679,6 +679,292 @@ mysql<span class="token operator">></span> <span class="token keyword">select</s
 ❎<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">where</span> height <span class="token operator">NOT</span> <span class="token operator">IS</span> <span class="token boolean">NULL</span><span class="token punctuation">;</span>
 mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">where</span> height <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-1-排序"><a href="#2-1-排序" class="headerlink" title="2.1 排序"></a>2.1 排序</h3><p>作用: 展示数据集的时候根据一项或者多项数据按照一定顺序进行排列</p>
+<blockquote>
+<p>  多个字段排序: 前几个字段相同就使用后续字段继续排序</p>
+</blockquote>
+<p>语法格式:    order by 字段名 排序方式,字段名 排序方式,…..</p>
+<p>默认排序方式就是升序ASC、降序 DESC   descend 向下倾斜</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 默认输出</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 用身高排序</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">order</span> <span class="token keyword">by</span> height<span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">order</span> <span class="token keyword">by</span> height <span class="token keyword">ASC</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">order</span> <span class="token keyword">by</span> height <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 先按年龄升序排  年龄相同的就按身高升序排</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">order</span> <span class="token keyword">by</span> age <span class="token keyword">ASC</span><span class="token punctuation">,</span>height <span class="token keyword">ASC</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 先按年龄升序排 年龄相同的就按身高升序排  身高相同的再按 id 降序排</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">order</span> <span class="token keyword">by</span> age <span class="token keyword">ASC</span><span class="token punctuation">,</span>height <span class="token keyword">ASC</span><span class="token punctuation">,</span>id <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-2-分页"><a href="#2-2-分页" class="headerlink" title="2.2 分页"></a>2.2 分页</h3><p>作用:  数据集很大的时，将数据分成一页一页的。</p>
+<p>格式: limit [数据起始下标=0,] 数据数量</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">limit</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">limit</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 求出班级中身高最高的三位同学</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">order</span> <span class="token keyword">by</span> height <span class="token keyword">DESC</span> <span class="token keyword">limit</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 每页 10 条</span>
+第<span class="token number">1</span>页  <span class="token keyword">limit</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">10</span>
+第<span class="token number">2</span>页  <span class="token keyword">limit</span> <span class="token number">10</span><span class="token punctuation">,</span><span class="token number">10</span>
+第<span class="token number">3</span>页  <span class="token keyword">limit</span> <span class="token number">20</span><span class="token punctuation">,</span><span class="token number">10</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+第n页  <span class="token keyword">limit</span> <span class="token number">10</span><span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">10</span>
+
+<span class="token comment" spellcheck="true">-- 每页是m条</span>
+第n页  <span class="token keyword">limit</span> m<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>m<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-3-聚合函数"><a href="#2-3-聚合函数" class="headerlink" title="2.3 聚合函数"></a>2.3 聚合函数</h3><blockquote>
+<p>  聚合函数又叫组函数:      将一组数据运算(聚合)出一个值</p>
+<p>  如果字段值为 NULL  则不参与聚合运算</p>
+</blockquote>
+<p>用法:               聚合函数(字段名)</p>
+<p>常用聚合函数: 和sum、数量count、平均数 avg、最大值max、最小值min </p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 求出班级中所有同学的平均年龄</span>
+<span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 求出班级中所有同学的平均身高</span>
+<span class="token keyword">select</span> <span class="token function">sum</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">count</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 求出班级中最大年龄</span>
+<span class="token keyword">select</span> <span class="token function">max</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 求出班级中最小年龄</span>
+<span class="token keyword">select</span> <span class="token function">min</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 求出班级中学生的数量</span>
+<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 求出班级中学生的身高综合</span>
+<span class="token keyword">select</span> <span class="token function">sum</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 求出班级中最大年龄和最高身高</span>
+<span class="token keyword">select</span> <span class="token function">max</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-4-分组"><a href="#2-4-分组" class="headerlink" title="2.4 分组"></a>2.4 分组</h3><p>作用:  将数据按照多个字段进行分组、对产生的每个小的分组进行分别的统计运算。</p>
+<p>字段相同的就在一个组。不同的就在不同组。</p>
+<p>形式:  group by 字段名;</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 分组之后 数据形式发生变化 不能支持使用 SQL 查看  多维结构 </span>
+❎<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> gender<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 1 group_concat(字段) 将分组内每个成员的字段值拼接在一起显示</span>
+<span class="token comment" spellcheck="true">-- 显示每种性别 及其每个性别所有的人名 每个人的id</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> gender<span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> gender<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 2 分组结合聚合函数</span>
+<span class="token comment" spellcheck="true">-- 默认情况下聚合函数是把整个表当做一个组进行计算</span>
+<span class="token comment" spellcheck="true">-- 一旦分组之后 聚合函数针对每个分组分别进行计算</span>
+<span class="token keyword">select</span> gender<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> gender<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 按性别分组 求出每组平均年龄 每组中所有年龄拼接显示</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> gender<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> gender<span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> gender<span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> gender<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 能够放到 select 后面的字段 要么就是 group 后的字段 要么放在聚合函数中  要么放在 group_concat()</span>
+
+<span class="token comment" spellcheck="true">-- 3 分组条件 只能使用 having 过滤分组结果中的数据</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> gender<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> gender<span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> gender<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> gender <span class="token keyword">having</span> <span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">50</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> gender<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> gender <span class="token keyword">having</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 4 with rollup 汇总行 </span>
+<span class="token comment" spellcheck="true">-- 将整体数据再交给 select 后面的函数再运算一遍求出结果 </span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> gender<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> gender <span class="token keyword">with rollup</span><span class="token punctuation">;</span>
+<span class="token operator">|</span> gender <span class="token operator">|</span> <span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment" spellcheck="true">--------+----------+</span>
+<span class="token operator">|</span> <span class="token boolean">NULL</span>   <span class="token operator">|</span>  <span class="token number">18.0000</span> <span class="token operator">|</span>
+<span class="token operator">|</span> 男     <span class="token operator">|</span>  <span class="token number">69.5000</span> <span class="token operator">|</span>
+<span class="token operator">|</span> 女     <span class="token operator">|</span>  <span class="token number">74.0000</span> <span class="token operator">|</span>
+<span class="token operator">|</span> <span class="token boolean">NULL</span>   <span class="token operator">|</span>  <span class="token number">63.4286</span> <span class="token operator">|</span> 汇总行
+<span class="token operator">+</span><span class="token comment" spellcheck="true">--------+----------+</span>
+
+<span class="token comment" spellcheck="true">-- with roll 和 having 顺序 </span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> gender<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> gender <span class="token keyword">with rollup</span> <span class="token keyword">having</span> <span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">50</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-5-连接"><a href="#2-5-连接" class="headerlink" title="2.5 连接"></a>2.5 连接</h3><p>应用场景: 当最终的结果集中所需的数据来自多个表，需要将多个表合并在一起取出所需的数据。</p>
+<p>语法形式: 左表 xx join 右表 on条件;</p>
+<p>连接准备数据</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 准备数据用以连接代码演示    </span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> hero<span class="token punctuation">(</span>id <span class="token keyword">int</span> unsigned <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">,</span>name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>gongfuid <span class="token keyword">int</span> unsigned <span class="token operator">not</span> <span class="token boolean">null</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> gongfu<span class="token punctuation">(</span>id <span class="token keyword">int</span> unsigned <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">,</span>name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> hero <span class="token punctuation">(</span>name<span class="token punctuation">,</span>gongfuid<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token string">'妲己'</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">'李白'</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">'程咬金'</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">'公孙离'</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> gongfu <span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token string">'吟诗作对'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">'魅惑'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">'三板斧'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">'沉默'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- select * from 左表 xx join 右表 on条件;</span>
+
+<span class="token comment" spellcheck="true">-- 1 笛卡尔积 一般不用 join /cross join 交叉连接</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> hero <span class="token keyword">join</span> gongfu<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*  1 | 妲己      |        2 |  1 | 吟诗作对     |
+|  2 | 李白      |        1 |  1 | 吟诗作对     |
+|  3 | 程咬金    |        3 |  1 | 吟诗作对     |
+|  4 | 公孙离    |        5 |  1 | 吟诗作对     |
+|  1 | 妲己      |        2 |  2 | 魅惑         |
+|  2 | 李白      |        1 |  2 | 魅惑         |
+|  3 | 程咬金    |        3 |  2 | 魅惑         |
+|  4 | 公孙离    |        5 |  2 | 魅惑         |
+|  1 | 妲己      |        2 |  3 | 三板斧       |
+|  2 | 李白      |        1 |  3 | 三板斧       |
+|  3 | 程咬金    |        3 |  3 | 三板斧       |
+|  4 | 公孙离    |        5 |  3 | 三板斧       |
+|  1 | 妲己      |        2 |  4 | 沉默         |
+|  2 | 李白      |        1 |  4 | 沉默         |
+|  3 | 程咬金    |        3 |  4 | 沉默         |
+|  4 | 公孙离    |        5 |  4 | 沉默         */</span>
+
+<span class="token comment" spellcheck="true">-- on 条件用来筛选笛卡尔积中满足条件的数据</span>
+<span class="token comment" spellcheck="true">-- 2 内连接 求出两个表的关联数据 inner join/join</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> hero <span class="token keyword">inner</span> <span class="token keyword">join</span> gongfu <span class="token keyword">on</span> hero<span class="token punctuation">.</span>gongfuid<span class="token operator">=</span>gongfu<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/* 2 | 李白      |        1 |  1 | 吟诗作对     |
+|  1 | 妲己      |        2 |  2 | 魅惑         |
+|  3 | 程咬金    |        3 |  3 | 三板斧       */</span>
+
+<span class="token comment" spellcheck="true">-- 3 外连接-左外  左连接 = 内连接 + 来自左表的外部数据</span>
+<span class="token comment" spellcheck="true">-- left outer join /left join 右表位置以 NULL 填充</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> hero <span class="token keyword">left</span> <span class="token keyword">join</span> gongfu <span class="token keyword">on</span> hero<span class="token punctuation">.</span>gongfuid<span class="token operator">=</span>gongfu<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/* 2 | 李白      |        1 |    1 | 吟诗作对     |
+|  1 | 妲己      |        2 |    2 | 魅惑         |
+|  3 | 程咬金    |        3 |    3 | 三板斧       |
+|  4 | 公孙离    |        5 | NULL | NULL        */</span>
+
+<span class="token comment" spellcheck="true">-- 4 右外连接  右连接 = 内连接 + 来自右表的外部数据</span>
+<span class="token comment" spellcheck="true">-- right outer join/right join 左表位置以 NULL 填充</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> hero <span class="token keyword">right</span> <span class="token keyword">join</span> gongfu <span class="token keyword">on</span> hero<span class="token punctuation">.</span>gongfuid<span class="token operator">=</span>gongfu<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*   1 | 妲己      |        2 |  2 | 魅惑         |
+|    2 | 李白      |        1 |  1 | 吟诗作对     |
+|    3 | 程咬金    |        3 |  3 | 三板斧       |
+| NULL | NULL      |     NULL |  4 | 沉默        */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-6-自连接"><a href="#2-6-自连接" class="headerlink" title="2.6 自连接"></a>2.6 自连接</h3><p>自关联、自连接是一种连接。select * from <code>左表 join 右表 on 条件</code>;  </p>
+<blockquote>
+<p>  左表 join 右表 on 条件看作一个虚表</p>
+</blockquote>
+<p>需求: 设计一些表存全国的所有的行政机构</p>
+<p>​    一张表存省直辖市   一张表存市  一张表县  … 至少 5 张表</p>
+<p>查询一个省下属所有的市</p>
+<p>​    select * from 省表 join 市表 on 省.id = 市表.上级机构 id;</p>
+<p>一张表将全国所有的省市直辖市市县存下来</p>
+<p>​    select * from 省表 join 市表 on 省.id = 市表.上级机构 id; </p>
+<p>应用场景:  当需要做连接查询时 并 左表和右表数据来自同一张表</p>
+<p>形式: select * from 表 as 别名1 inner join 表 as 别名2 on 别名1.字段 xx 别名2.字段;</p>
+<p> select * from 表 别名1 inner join 表 别名2 on 别名1.字段 xx 别名2.字段;</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 导入数据</span>
+<span class="token comment" spellcheck="true">-- 1 将文件拷贝到桌面</span>
+<span class="token comment" spellcheck="true">-- 2 打开一个 linux终端 </span>
+<span class="token comment" spellcheck="true">-- 3 登录 mysql mysql -uroot -pmysql</span>
+<span class="token comment" spellcheck="true">-- 4 use py29; 创建一个表</span>
+mysql<span class="token operator">></span> <span class="token keyword">use</span> pu29<span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">create</span> <span class="token keyword">table</span> areas<span class="token punctuation">(</span>
+    id <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span> 
+    title <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+    pid <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 5 执行 sql文件</span>
+mysql<span class="token operator">></span> source <span class="token operator">/</span>home<span class="token operator">/</span>python<span class="token operator">/</span>Desktop<span class="token operator">/</span>areas<span class="token punctuation">.</span>sql<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">--  获取一个表的总行数</span>
+<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> areas<span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> areas city <span class="token keyword">join</span> areas pro<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- as 关键字 mysql 中可以省略</span>
+<span class="token comment" spellcheck="true">-- 1 求出广东省下属所有市</span>
+<span class="token comment" spellcheck="true">-- on 市.所属上级机构 id  = 省.id</span>
+<span class="token comment" spellcheck="true">-- select xxx from 表  where 条件;</span>
+<span class="token comment" spellcheck="true">-- areas city join areas pro on city.pid = pro.id 看作一个虚表</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> 
+    <span class="token keyword">from</span> areas city <span class="token keyword">join</span> areas pro <span class="token keyword">on</span> city<span class="token punctuation">.</span>pid <span class="token operator">=</span> pro<span class="token punctuation">.</span>id 
+    <span class="token keyword">where</span> pro<span class="token punctuation">.</span>title <span class="token operator">=</span> <span class="token string">"广东省"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 2 </span>
+<span class="token keyword">select</span> <span class="token operator">*</span> 
+    <span class="token keyword">from</span> areas city <span class="token keyword">join</span> areas pro <span class="token keyword">on</span> city<span class="token punctuation">.</span>pid <span class="token operator">=</span> pro<span class="token punctuation">.</span>id 
+    <span class="token keyword">where</span> pro<span class="token punctuation">.</span>title <span class="token operator">=</span> <span class="token string">"河南省"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-7-子查询"><a href="#2-7-子查询" class="headerlink" title="2.7 子查询"></a>2.7 子查询</h3><p>需求: 求出班级中年龄大于平均年龄23岁的学生信息</p>
+<p>​    1 求出平均年龄   select avg(age) from students;</p>
+<p>​    2 求解           select * from students where age&gt;平均年龄;</p>
+<p>概念: 子查询:嵌套在内部的 select 语句      使用子查询的查询语句:主查询</p>
+<p>形式: 主select 语句 条件(子select 语句)</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 分类</span>
+<span class="token comment" spellcheck="true">--1 标量子查询  子查询返回的结果是一个值(一个字段)</span>
+<span class="token comment" spellcheck="true">-- 求出班级中身高高于平均身高的学生信息</span>
+<span class="token comment" spellcheck="true">-- 第一步 求出平均身高</span>
+<span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 第二步  使用第一个的数据进行外部查询</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">where</span> height <span class="token operator">></span> <span class="token number">170.98</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 子查询写法</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">where</span> height <span class="token operator">></span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">--2 列子查询  子查询返回的结果是     一列多行</span>
+<span class="token comment" spellcheck="true">-- 查询 正在被英雄使用的所有技能名称</span>
+<span class="token comment" spellcheck="true">-- 第一步 求出所有英雄正在使用的技能 id</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> gongfuid <span class="token keyword">from</span> hero<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 第二步 使用第一步求出的技能 id 去技能表中进行比较</span>
+<span class="token keyword">select</span> name <span class="token keyword">from</span> gongfu <span class="token keyword">where</span> id <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 子查询写法</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> name <span class="token keyword">from</span> gongfu <span class="token keyword">where</span> id <span class="token operator">in</span> <span class="token punctuation">(</span> <span class="token keyword">select</span> gongfuid <span class="token keyword">from</span> hero<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">--3 行子查询   子查询返回的结果是  一行多列</span>
+<span class="token comment" spellcheck="true">-- 查询在班级中  身高最高并且年龄最大的学生信息</span>
+<span class="token comment" spellcheck="true">-- 第一步 求出最高身高和最大年龄 </span>
+<span class="token keyword">select</span> <span class="token function">max</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 第二步 使用第一步求出的数据 去学生表中比较</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students 
+    <span class="token keyword">where</span> height<span class="token operator">=</span><span class="token number">178</span> <span class="token operator">and</span> age <span class="token operator">=</span> <span class="token number">150</span><span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students 
+    <span class="token keyword">where</span> <span class="token punctuation">(</span>height<span class="token punctuation">,</span>age<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">178</span><span class="token punctuation">,</span><span class="token number">150</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 子查询写法 </span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> students <span class="token keyword">where</span> <span class="token punctuation">(</span>height<span class="token punctuation">,</span>age<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">max</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">from</span> students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-1-外键约束⭐️⭐️⭐️⭐️"><a href="#3-1-外键约束⭐️⭐️⭐️⭐️" class="headerlink" title="3.1 外键约束⭐️⭐️⭐️⭐️"></a>3.1 外键约束⭐️⭐️⭐️⭐️</h3><p>作用: 约束时子表在更新、插入外键字段的时，该值一定要在主表中存在;否则更新、插入失败</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 1 给已经存在的子表中一个字段加上外键约束</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> 子表名 <span class="token keyword">add</span> <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>字段名<span class="token punctuation">)</span> <span class="token keyword">references</span> 主表名<span class="token punctuation">(</span>字段名<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> hero <span class="token keyword">add</span> <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>gongfuid<span class="token punctuation">)</span> <span class="token keyword">references</span> gongfu<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 2 查看已经创建好的外键约束&lt;外键约束的名字></span>
+mysql<span class="token operator">></span> <span class="token keyword">show</span> <span class="token keyword">create</span> <span class="token keyword">table</span> hero<span class="token punctuation">;</span>
+ <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span>hero<span class="token punctuation">`</span> <span class="token punctuation">(</span>
+  <span class="token punctuation">`</span>id<span class="token punctuation">`</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> unsigned <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>name<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>gongfuid<span class="token punctuation">`</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> unsigned <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">KEY</span> <span class="token punctuation">`</span>gongfuid<span class="token punctuation">`</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>gongfuid<span class="token punctuation">`</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">CONSTRAINT</span> <span class="token punctuation">`</span>hero_ibfk_1<span class="token punctuation">`</span> <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>gongfuid<span class="token punctuation">`</span><span class="token punctuation">)</span> <span class="token keyword">REFERENCES</span> <span class="token punctuation">`</span>gongfu<span class="token punctuation">`</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> 
+
+<span class="token comment" spellcheck="true">-- 3 测试外键约束的作用</span>
+❎<span class="token keyword">update</span> hero <span class="token keyword">set</span> gongfuid<span class="token operator">=</span><span class="token number">10</span> <span class="token keyword">where</span> id <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">update</span> hero <span class="token keyword">set</span> gongfuid<span class="token operator">=</span><span class="token number">2</span> <span class="token keyword">where</span> id <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+❎<span class="token keyword">insert</span> <span class="token keyword">into</span> hero <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">'花木兰'</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 4 删除外键约束</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> hero dop <span class="token keyword">foreign</span> <span class="token keyword">key</span> 外键约束名<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-2-数据库设计⭐️⭐️⭐️"><a href="#3-2-数据库设计⭐️⭐️⭐️" class="headerlink" title="3.2 数据库设计⭐️⭐️⭐️"></a>3.2 数据库设计⭐️⭐️⭐️</h3><blockquote>
+<p>   理解设计范式、ER 模型中关系  理解思想</p>
+</blockquote>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 数据库设计  存储系统中需要几个表 每个表分别有什么字段 表之间有什么关系</span>
+
+<span class="token comment" spellcheck="true">-- NF normal form范式: 规律、规则</span>
+<span class="token comment" spellcheck="true">-- 1NF 一个字段不允许包含多种数据</span>
+
+<span class="token comment" spellcheck="true">-- 2NF: 1NF;表中有主键;非主键完全依赖于主键(不能出现部分依赖</span>
+非主键字段  商品单价、商品名称 只依赖于主键的部分   商品id，不依赖于订单 ID  形成了部分依赖   导致不满足完全依赖<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 3NF:2NF 非主键直接依赖于主键（而不能传递依赖于主键</span>
+非主键字段 用户名字 地址 城市 只依赖于非主键字段用户 ID
+用户 ID 再依赖于主键订单 ID
+形成了  非主键字段 用户名字 地址 城市 对主键的传递依赖
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-4-SQL执行顺序⭐️⭐️⭐️"><a href="#3-4-SQL执行顺序⭐️⭐️⭐️" class="headerlink" title="3.4 SQL执行顺序⭐️⭐️⭐️"></a>3.4 SQL执行顺序⭐️⭐️⭐️</h3><blockquote>
+<p>  主要了解 关键字书写顺序、运行顺序()</p>
+</blockquote>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token keyword">SELECT</span> <span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token keyword">DISTINCT</span><span class="token operator">&lt;</span>select_list<span class="token operator">></span>
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token keyword">FROM</span> <span class="token operator">&lt;</span>left_table<span class="token operator">></span>
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>join_type<span class="token operator">></span><span class="token keyword">JOIN</span><span class="token operator">&lt;</span>right_table<span class="token operator">></span>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token keyword">ON</span> <span class="token operator">&lt;</span>join_condition<span class="token operator">></span>
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token keyword">WHERE</span> <span class="token operator">&lt;</span>where_condition<span class="token operator">></span>
+<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> <span class="token operator">&lt;</span>group_by_list<span class="token operator">></span>
+<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token keyword">WITH</span> {CUBE<span class="token operator">|</span>ROLLUP}
+<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token keyword">HAVING</span> <span class="token operator">&lt;</span>having_condition<span class="token operator">></span>
+<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token keyword">ORDER</span> <span class="token keyword">BY</span><span class="token operator">&lt;</span>order_by_list<span class="token operator">></span>
+<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token keyword">LIMIT</span> <span class="token operator">&lt;</span>limit_number<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -954,9 +1240,9 @@ mysql<span class="token operator">></span> <span class="token keyword">select</s
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="MySql基础介绍">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="MySql基础">
                         
-                        <span class="card-title">MySql基础介绍</span>
+                        <span class="card-title">MySql基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1167,7 +1453,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.9k</span>&nbsp;字
+                class="white-color">4.7k</span>&nbsp;字
             
             
             
